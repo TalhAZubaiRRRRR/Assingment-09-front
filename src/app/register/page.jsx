@@ -58,7 +58,7 @@ export default function RegisterPage() {
         <div className="min-h-screen bg-[#1E2937] flex items-center justify-center px-4 py-12 ">
             <Card className="w-full max-w-md shadow-2xl border-0 overflow-hidden">
                 
-                {/* Dark Header */}
+                
                 <div className="bg-[#0f172a] text-white py-10 px-6 text-center rounded-2xl">
                     <div className="flex justify-center mb-4">
                         <Image

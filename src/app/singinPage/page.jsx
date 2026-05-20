@@ -12,6 +12,7 @@ import {
     Label,
     TextField,
 } from "@heroui/react";
+
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FaGoogle } from "react-icons/fa";
@@ -51,7 +52,12 @@ export default function SignINPage() {
           } catch (err) {
               toast.error("Something went wrong. Please try again.");
           }
+
+
+          
       };
+
+      
 
     const handleGoogleSignIn = async () => {
         await authClient.signIn.social({

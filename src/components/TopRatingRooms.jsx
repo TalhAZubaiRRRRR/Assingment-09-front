@@ -51,7 +51,7 @@ const TopRatingRooms = async () => {
                 </div>
 
                 <Link
-                  href={`/rooms/${room._id}`}
+                  href={`/details/${room._id}`}
                   className="mt-3 w-full bg-teal-500 text-white py-2 rounded-lg hover:bg-teal-400 transition text-center"
                 >
                   View Details

@@ -5,10 +5,7 @@ import { Avatar, Button } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { 
-  FaPhone, FaEnvelope, FaClock, 
-  FaBars, FaTimes 
-} from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaClock, FaBars, FaTimes } from 'react-icons/fa';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -30,15 +27,11 @@ export default function Navbar() {
             <a href="tel:+8801234567890" className="flex items-center gap-2 hover:text-teal-200 transition">
               <FaPhone /> +880 1234-567890
             </a>
-            
             <span className="hidden md:inline text-white/40">|</span>
-            
             <a href="mailto:info@studyroom.com" className="flex items-center gap-2 hover:text-teal-200 transition">
               <FaEnvelope /> info@studyroom.com
             </a>
-            
             <span className="hidden md:inline text-white/40">|</span>
-            
             <div className="flex items-center gap-2">
               <FaClock /> Sat - Thu: 8:00 AM - 10:00 PM
             </div>
@@ -67,57 +60,67 @@ export default function Navbar() {
               </div>
             </Link>
 
-            
+            {/* Desktop  */}
             <div className="hidden md:flex items-center gap-8 text-white font-medium">
               <Link href="/" className="hover:text-teal-400 transition">Home</Link>
               <Link href="/rooms" className="hover:text-teal-400 transition">Rooms</Link>
-              <Link href="/addRooms" className="hover:text-teal-400 transition">Add Rooms</Link>
-              <Link href="/blog" className="hover:text-teal-400 transition">Blog</Link>
-              <Link href="/contact" className="hover:text-teal-400 transition">Contact</Link>
+
+              {user && (
+                <>
+                  <Link href="/addRooms" className="hover:text-teal-400 transition">Add Rooms</Link>
+                  <Link href="/myListing" className="hover:text-teal-400 transition">My Listing</Link>
+                  <Link href="/myBooking" className="hover:text-teal-400 transition">My Booking</Link>
+                  <Link href="/details" className="hover:text-teal-400 transition">Details</Link>
+                </>
+              )}
             </div>
 
             
             <div className="flex items-center gap-4">
-              {!user ? (
-                <div className="flex items-center gap-3">
-                  <Link 
-                    href="/register" 
-                    className="hidden sm:block px-6 py-2.5 border border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-slate-900 rounded-xl font-medium transition"
-                  >
-                    Register
-                  </Link>
-                  <Link 
-                    href="/singinPage" 
-                    className="px-6 py-2.5 bg-teal-500 hover:bg-teal-400 text-white font-semibold rounded-xl transition"
-                  >
-                    Login
-                  </Link>
-                </div>
-              ) : (
-                <div className="flex items-center gap-3">
-                  <Avatar size="sm" className="border border-teal-400">
-                    <Avatar.Image 
-                      src={user?.image} 
-                      alt={user?.name} 
-                      referrerPolicy="no-referrer" 
-                    />
-                    <Avatar.Fallback>{user?.name?.[0]?.toUpperCase()}</Avatar.Fallback>
-                  </Avatar>
+              
+              
+              <div className="hidden md:flex items-center gap-3">
+                {!user ? (
+                  <>
+                    <Link 
+                      href="/register" 
+                      className="px-6 py-2.5 border border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-slate-900 rounded-xl font-medium transition"
+                    >
+                      Register
+                    </Link>
+                    <Link 
+                      href="/singinPage" 
+                      className="px-6 py-2.5 bg-teal-500 hover:bg-teal-600 rounded-xl font-medium transition"
+                    >
+                      Login
+                    </Link>
+                  </>
+                ) : (
+                  <div className="flex items-center gap-3">
+                    <Avatar size="sm" className="border border-teal-400">
+                      <Avatar.Image 
+                        src={user?.image} 
+                        alt={user?.name} 
+                        referrerPolicy="no-referrer" 
+                      />
+                      <Avatar.Fallback>{user?.name?.[0]?.toUpperCase()}</Avatar.Fallback>
+                    </Avatar>
 
-                  <Button 
-                    onClick={handleSignOut} 
-                    size="sm" 
-                    variant="danger"
-                  >
-                    Sign Out
-                  </Button>
-                </div>
-              )}
+                    <Button 
+                      onClick={handleSignOut} 
+                      size="sm" 
+                      variant="danger"
+                    >
+                      Sign Out
+                    </Button>
+                  </div>
+                )}
+              </div>
 
-              {/* Mobile Menu Button */}
+              {/* Mobile Menu Toggle Button */}
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
-                className="md:hidden text-white text-3xl"
+                className="md:hidden text-white text-3xl p-2"
               >
                 {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
               </button>
@@ -134,17 +137,25 @@ export default function Navbar() {
             <Link href="/rooms" className="block hover:text-teal-400" onClick={() => setIsMobileMenuOpen(false)}>
               Rooms
             </Link>
-            <Link href="/addRooms" className="block hover:text-teal-400" onClick={() => setIsMobileMenuOpen(false)}>
-              Add Rooms
-            </Link>
-            <Link href="/blog" className="block hover:text-teal-400" onClick={() => setIsMobileMenuOpen(false)}>
-              Blog
-            </Link>
-            <Link href="/contact" className="block hover:text-teal-400" onClick={() => setIsMobileMenuOpen(false)}>
-              Contact
-            </Link>
 
-            <div className="border-t border-slate-600 pt-4">
+            {user && (
+              <>
+                <Link href="/addRooms" className="block hover:text-teal-400" onClick={() => setIsMobileMenuOpen(false)}>
+                  Add Rooms
+                </Link>
+                <Link href="/myListing" className="block hover:text-teal-400" onClick={() => setIsMobileMenuOpen(false)}>
+                  My Listing
+                </Link>
+                <Link href="/myBooking" className="block hover:text-teal-400" onClick={() => setIsMobileMenuOpen(false)}>
+                  My Booking
+                </Link>
+                <Link href="/details" className="block hover:text-teal-400" onClick={() => setIsMobileMenuOpen(false)}>
+                  Details
+                </Link>
+              </>
+            )}
+
+            <div className="border-t border-slate-600 pt-6">
               {!user ? (
                 <>
                   <Link 
@@ -163,12 +174,19 @@ export default function Navbar() {
                   </Link>
                 </>
               ) : (
-                <div className="flex items-center gap-3 pt-2">
-                  <Avatar size="sm">
-                    <Avatar.Image src={user?.image} referrerPolicy="no-referrer" />
-                    <Avatar.Fallback>{user?.name?.[0]}</Avatar.Fallback>
-                  </Avatar>
-                  <Button onClick={handleSignOut} variant="danger">
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center gap-3">
+                    <Avatar size="sm">
+                      <Avatar.Image src={user?.image} referrerPolicy="no-referrer" />
+                      <Avatar.Fallback>{user?.name?.[0]?.toUpperCase()}</Avatar.Fallback>
+                    </Avatar>
+                    <span className="text-white font-medium">{user?.name}</span>
+                  </div>
+                  <Button 
+                    onClick={handleSignOut} 
+                    variant="danger" 
+                    className="w-full"
+                  >
                     Sign Out
                   </Button>
                 </div>

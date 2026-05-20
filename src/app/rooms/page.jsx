@@ -58,7 +58,7 @@ const RoomsPage = () => {
         <div className="flex flex-col md:flex-row gap-8 px-6 py-10 bg-[#0F766E]">
             {/* Filters Sidebar */}
             <aside className="w-full md:w-1/4 bg-[#1E2937] p-6 rounded-lg shadow">
-                <h2 className="text-xl font-bold mb-4 text-teal-700">Refine</h2>
+                <h2 className="text-xl font-bold mb-4 text-teal-400">Refine</h2>
 
                 {/* Search */}
                 <input
@@ -66,18 +66,18 @@ const RoomsPage = () => {
                     placeholder="Search by name..."
                     value={filters.search}
                     onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-                    className="w-full mb-4 px-3 py-2 border rounded focus:outline-none"
+                    className="w-full mb-4 px-3 py-2 border rounded focus:outline-none text-white"
                 />
 
                 {/* Amenities */}
                 <div className="space-y-2">
                     {["wifi", "projector", "whiteboard", "ac"].map((key) => (
-                        <label key={key} className="flex items-center">
+                        <label key={key} className="flex items-center text-white">
                             <input
                                 type="checkbox"
                                 checked={filters[key]}
                                 onChange={() => setFilters({ ...filters, [key]: !filters[key] })}
-                                className="mr-2"
+                                className="mr-2 "
                             />
                             {key === "wifi" && "Wi-Fi"}
                             {key === "projector" && "Projector"}
@@ -92,7 +92,7 @@ const RoomsPage = () => {
 
                
                 <div className="mt-6">
-                    <label className="block font-semibold mb-2 text-teal-700">Select Hours</label>
+                    <label className="block font-semibold mb-2 text-white">Select Hours</label>
                     <input
                         type="text"
                         inputMode="decimal"
@@ -113,9 +113,9 @@ const RoomsPage = () => {
                             if (num > 7) num = 7;
                             setFilters({ ...filters, hours: num });
                         }}
-                        className="w-full px-2 py-1 border rounded"
+                        className="w-full px-2 py-1 border rounded text-white"
                     />
-                    <p className="text-sm text-gray-500 mt-1">
+                    <p className="text-sm text-gray-400 mt-1">
                         You can book between 0 and 7 hours .
                     </p>
                 </div>
@@ -185,7 +185,7 @@ const RoomsPage = () => {
             {room.amenities.map((amenity, i) => (
               <span
                 key={i}
-                className="text-xs bg-teal-700 px-2 py-1 rounded-full"
+                className="text-xs bg-teal-700 px-2 py-1 rounded-full text-white font-semibold"
               >
                 {amenity}
               </span>
@@ -193,7 +193,7 @@ const RoomsPage = () => {
           </div>
 
           {/* Button pinned to bottom */}
-          <Link href={`/rooms/${room._id}`}>
+          <Link href={`/details/${room._id}`}>
           <button className=" w-full bg-teal-700 text-white py-2 rounded-lg hover:bg-teal-800 transition mt-3">
             View Details
           </button>

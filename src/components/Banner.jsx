@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import bannerImg from "../../public/banner-png1.png";
+import smart from "../../public/smart.png"
+import photo2 from "../../public/photo2.jpg"
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
 
@@ -53,7 +55,7 @@ const Banner = () => {
         <SwiperSlide className="relative w-full h-full">
           {/* You can change the content or image here */}
           <Image
-            src={bannerImg}
+            src={photo2}
             alt="StudyRoom banner"
             fill
             priority
@@ -73,7 +75,7 @@ const Banner = () => {
         {/* Slide 3 */}
         <SwiperSlide className="relative w-full h-full">
           <Image
-            src={bannerImg}
+            src={smart}
             alt="StudyRoom banner"
             fill
             priority

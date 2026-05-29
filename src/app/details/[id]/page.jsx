@@ -1,3 +1,4 @@
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,12 +7,15 @@ import { MdDelete } from "react-icons/md";
 import { headers } from "next/headers";
 import { auth } from "@/lib/rooms/auth";
 import { FaArrowLeft, FaCheck, FaPencilAlt } from "react-icons/fa";
+import BookingButton from "@/components/BookingButton";
 
 
 const fetchSingleRooms = async (id, token) => {
   if (!id || !token) {
     throw new Error("Missing room ID or token");
   }
+
+
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rooms/${id}`, {
     headers: {
@@ -28,14 +32,14 @@ const fetchSingleRooms = async (id, token) => {
 };
 
 export default async function RoomsDetails({ params }) {
-  const { id } = await params;   
+  const { id } = await params;
 
-  
+
   const { token } = await auth.api.getToken({
     headers: await headers(),
   });
 
-  console.log("Token from auth:", token);
+  // console.log("Token from auth:", token);
 
   let room;
   try {
@@ -111,17 +115,21 @@ export default async function RoomsDetails({ params }) {
                   >
                     {amenity}
                   </span>
+
                 ))}
               </div>
             </div>
           </div>
 
+          <p className=" text-white mt-3 text-xs bg-[#1E2937] px-3 py-1 rounded-full w-fit">
+            Booking Count: {room.bookingCount || 0}
+          </p>
+
+
+
           {/* Action Buttons */}
           <div className="mt-6 flex flex-col gap-3">
-            <button className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-full flex items-center justify-center gap-3 font-semibold transition-all duration-200 transform hover:scale-105 active:scale-95 cursor-pointer">
-              <FaCheck className="text-xl" />
-              Book Now
-            </button>
+            <BookingButton room={room} token={token} />
 
             <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-full flex items-center justify-center gap-3 font-semibold transition-all duration-200 transform hover:scale-105 active:scale-95 cursor-pointer">
               <FaPencilAlt className="text-xl" />

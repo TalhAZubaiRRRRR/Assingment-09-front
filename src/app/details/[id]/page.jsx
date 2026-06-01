@@ -5,7 +5,7 @@ import Link from "next/link";
 // import { FaArrowLeft, FaCheck, FaPencil } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { headers } from "next/headers";
-import { auth } from "@/lib/rooms/auth";
+import { auth } from "@/lib/auth";
 import { FaArrowLeft, FaCheck, FaPencilAlt } from "react-icons/fa";
 import BookingButton from "@/components/BookingButton";
 

@@ -27,6 +27,8 @@ export default function RegisterPage() {
         const image = e.target.image.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
+
+        
         
 
         try {
@@ -86,7 +88,7 @@ export default function RegisterPage() {
                             <FieldError />
                         </TextField>
 
-                        <TextField isRequired name="image" type="url">
+                        <TextField name="image" type="url">
                             <Label className="text-gray-800 font-medium">Profile Image URL (Optional)</Label>
                             <Input 
                                 placeholder="https://example.com/your-image.jpg" 

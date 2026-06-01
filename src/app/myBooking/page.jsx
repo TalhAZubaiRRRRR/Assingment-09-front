@@ -1,10 +1,11 @@
-import { auth } from '@/lib/rooms/auth';
+
 import { headers } from 'next/headers';
 import Image from 'next/image';
 import alterPic from '../../../public/alterPic.png';
 import Link from 'next/link';
 import { Chip } from '@heroui/react';
 import CancelBookingButton from '@/components/CancelBookingButton';
+import { auth } from '@/lib/auth';
 
 export default async function MyBookingPage() {
 
@@ -108,22 +109,22 @@ export default async function MyBookingPage() {
 
 
                   <CancelBookingButton id={b._id} />
-                  
+
                 </div>
-                
+
               ))
             ) : (
-             <div className="flex flex-col items-center justify-center min-h-[60vh] pt-10">
-      <div className="p-12 text-center bg-white border rounded-2xl shadow-lg max-w-md w-full">
-        <p className="text-2xl text-gray-600 mb-6">No booking yet</p>
-        <Link
-          href="/rooms"
-          className="inline-block bg-teal-600 hover:bg-teal-700 text-white px-10 py-3 rounded-lg font-medium transition"
-        >
-          Browse Rooms
-        </Link>
-      </div>
-    </div>
+              <div className="flex flex-col items-center justify-center min-h-[60vh] pt-10">
+                <div className="p-12 text-center bg-white border rounded-2xl shadow-lg max-w-md w-full">
+                  <p className="text-2xl text-gray-600 mb-6">No booking yet</p>
+                  <Link
+                    href="/rooms"
+                    className="inline-block bg-teal-600 hover:bg-teal-700 text-white px-10 py-3 rounded-lg font-medium transition"
+                  >
+                    Browse Rooms
+                  </Link>
+                </div>
+              </div>
             )}
           </div>
         </div>

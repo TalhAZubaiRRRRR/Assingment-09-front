@@ -1,19 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactCompiler: true, // keep your built-in option
-
+  /* config options here */
+  reactCompiler: true,
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "i.ibb.co.com", 
+        hostname: "***",
       },
-      {
-      protocol: 'https',
-      hostname: 'media.istockphoto.com',
-    },
-    ],
-  },
+    
+      
+    ]
+  }
 };
 
 export default nextConfig;

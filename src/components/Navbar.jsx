@@ -68,9 +68,8 @@ export default function Navbar() {
               {user && (
                 <>
                   <Link href="/addRooms" className="hover:text-teal-400 transition">Add Rooms</Link>
-                  <Link href="/myListing" className="hover:text-teal-400 transition">My Listing</Link>
+
                   <Link href="/myBooking" className="hover:text-teal-400 transition">My Booking</Link>
-                  <Link href="/details" className="hover:text-teal-400 transition">Details</Link>
                 </>
               )}
             </div>
@@ -143,14 +142,9 @@ export default function Navbar() {
                 <Link href="/addRooms" className="block hover:text-teal-400" onClick={() => setIsMobileMenuOpen(false)}>
                   Add Rooms
                 </Link>
-                <Link href="/myListing" className="block hover:text-teal-400" onClick={() => setIsMobileMenuOpen(false)}>
-                  My Listing
-                </Link>
+                
                 <Link href="/myBooking" className="block hover:text-teal-400" onClick={() => setIsMobileMenuOpen(false)}>
                   My Booking
-                </Link>
-                <Link href="/details" className="block hover:text-teal-400" onClick={() => setIsMobileMenuOpen(false)}>
-                  Details
                 </Link>
               </>
             )}

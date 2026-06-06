@@ -8,6 +8,9 @@ import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import { FaArrowLeft, FaCheck, FaPencilAlt } from "react-icons/fa";
 import BookingButton from "@/components/BookingButton";
+import FullRoomDelete from "@/components/FullRoomDelete";
+
+import RoomEditButton from "@/components/RoomEditButton";
 
 
 const fetchSingleRooms = async (id, token) => {
@@ -104,21 +107,29 @@ export default async function RoomsDetails({ params }) {
             </p>
             <p className="text-sm text-gray-300">Location: {room.location}</p>
 
+            
             {/* Amenities */}
-            <div className="mt-4">
-              <h3 className="text-white font-semibold mb-2">Amenities</h3>
-              <div className="flex flex-wrap gap-2">
-                {room.amenities?.map((amenity, i) => (
-                  <span
-                    key={i}
-                    className="text-xs bg-[#1E2937] text-white px-3 py-1 rounded-full"
-                  >
-                    {amenity}
-                  </span>
-
-                ))}
-              </div>
-            </div>
+<div className="mt-4">
+  <h3 className="text-white font-semibold mb-2">Amenities</h3>
+  <div className="flex flex-wrap gap-2">
+    {Array.isArray(room.amenities) ? (
+      room.amenities.map((amenity, i) => (
+        <span
+          key={i}
+          className="text-xs bg-[#1E2937] text-white px-3 py-1 rounded-full"
+        >
+          {amenity}
+        </span>
+      ))
+    ) : room.amenities ? (
+      <span className="text-xs bg-[#1E2937] text-white px-3 py-1 rounded-full">
+        {room.amenities}
+      </span>
+    ) : (
+      <p className="text-gray-400 text-sm">No amenities listed</p>
+    )}
+  </div>
+</div>
           </div>
 
           <p className=" text-white mt-3 text-xs bg-[#1E2937] px-3 py-1 rounded-full w-fit">
@@ -131,15 +142,9 @@ export default async function RoomsDetails({ params }) {
           <div className="mt-6 flex flex-col gap-3">
             <BookingButton room={room} token={token} />
 
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-full flex items-center justify-center gap-3 font-semibold transition-all duration-200 transform hover:scale-105 active:scale-95 cursor-pointer">
-              <FaPencilAlt className="text-xl" />
-              Edit
-            </button>
+            <RoomEditButton room={room}/>
 
-            <button className="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-full flex items-center justify-center gap-3 font-semibold transition-all duration-200 transform hover:scale-105 active:scale-95 cursor-pointer">
-              <MdDelete className="text-xl" />
-              Delete
-            </button>
+            <FullRoomDelete room={room}/>
 
             <Link
               href="/rooms"

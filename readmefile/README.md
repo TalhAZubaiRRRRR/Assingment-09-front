@@ -3,7 +3,7 @@
 **StudyRoom** is a modern, full-stack web application built for booking and managing study rooms, meeting spaces, or rental rooms. It features a sleek dark UI, real-time room management, and a smooth booking experience.
 
 ## Live Demo
-**🌐 [Visit StudyRoom](https://your-live-site-url.com)**
+**🌐 [Visit StudyRoom](https://assingment-09-front.vercel.app/)**
 
 *(Replace with your actual deployed URL once live)*
 

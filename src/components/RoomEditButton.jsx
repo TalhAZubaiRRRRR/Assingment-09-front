@@ -40,18 +40,22 @@ const RoomEditButton = ({ room }) => {
         .map(a => a.trim())
         .filter(Boolean);
     }
-
-    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rooms/${_id}`, {
+    console.log(`${process.env.NEXT_PUBLIC_API_URL}/rooms/${_id}`,updatedData);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rooms/${_id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedData),
-        credentials: "include",
+        // credentials: "include",
       });
 
       const data = await res.json();
+      console.log(data , "data is commintg..............")
+
+    try {
+      
+
 
       if (res.ok) {
         setIsOpen(false);

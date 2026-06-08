@@ -9,7 +9,7 @@ export default function CancelBookingButton({ id }) {
     console.log(id)
 
     const handleCancelBooking = async () =>{
-        const res =await fetch (`http://localhost:8000/booking/${id}`,{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/booking/${id}`,{
             method: "DELETE",
             headers:{
                 "content-type":"application/json"
@@ -19,41 +19,7 @@ export default function CancelBookingButton({ id }) {
         window.location.reload()
         console.log(data)
     }
-//   const { data: session } = useSession();
-//   const router = useRouter();
 
-//   const handleCancel = async () => {
-//     if (!id) {
-//       toast.error("No booking ID provided");
-//       return;
-//     }
-
-//     // Get JWT token
-//     const { data: jwData } = await authClient.token();
-//     const token = jwData?.token;
-
-//     if (!token) {
-//       toast.error("Authentication failed. Booking not cancelled.");
-//       return;
-//     }
-
-//     // Call DELETE route
-//     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/booking/${id}`, {
-//       method: "DELETE",
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     });
-
-//     const data = await res.json();
-
-//     if (res.ok && data.success) {
-//       toast.success("Booking cancelled successfully");
-//       router.refresh();
-//     } else {
-//       toast.error(data.message || "Failed to cancel booking");
-//     }
-//   };
 
   return (
     <AlertDialog>

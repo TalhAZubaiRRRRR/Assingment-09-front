@@ -39,7 +39,7 @@ export default function BookingButton({ room, bookings }) {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(updatedData),
     })
